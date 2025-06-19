@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>NoteWise</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+
+    <!-- CSS (corrigir caminho) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="./static/Interface-Login/script.js"></script>
+
+    <!-- JS (corrigir caminho) -->
+    <script src="{{ url_for('static', filename='Interface-Login/script.js') }}"></script>
 </head>
 
 <body>
@@ -16,29 +18,30 @@
         <div class="left-login">
             <h1>Boas vindas ao Zetria!<br>
                 Para continuar faça login na sua conta.</h1>
-            <img src="imgs/img-login.png" class="left-login-img" alt="img-login">
+
+            <!-- Imagem (corrigir caminho) -->
+            <img src="{{ url_for('static', filename='image/logo_abelha.png') }}" class="left-login-img" alt="img-login">
         </div>
         <div class="right-login">
 
-            <form class="r-card-login">
+            <!-- Formulário com action correto -->
+            <form class="r-card-login" method="POST" action="{{ url_for('login') }}">
                 <h1>Login</h1>
                 <div class="textfield">
                     <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usuário">
+                    <input type="text" name="username" placeholder="Usuário">
                 </div>
                 <div class="textfield">
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="senha">
+                    <input type="password" name="password" placeholder="Senha">
                 </div>
-                <button class="btn-login" id="btn-login">Login</button>
-                <a href="../Interface-Cadastro/Cadastro.html">Não possuí uma conta?</a>
-
+                <button class="btn-login" id="btn-login" type="submit">Login</button>
+                
+                <!-- Link de cadastro -->
+                <a href="{{ url_for('cadastro') }}">Não possui uma conta?</a>
             </form>
 
         </div>
-
     </div>
-
 </body>
-
 </html>

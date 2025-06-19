@@ -1,46 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Cadastro</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='Cadastro.css'>
-        <script src="./static/Interface-Cadastro/script.js"></script>
-    </head>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cadastro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <body>
-        <div class="main-Cadastro">
-            <div class="left-Cadastro">
-                <h1>Faça seu Cadastro</h1>
-                <img src="imgs/img-login.png" class="left-Cadastro-img"
-                    alt="img-Cadastro">
-            </div>
-            <div class="right-Cadastro">
-               
-                <form class="r-card-Cadastro">
-                    <h1>Cadastro</h1>
-                    <div class="textfield">
-                        <label for="usuario">Usuário/email</label>
-                        <input type="text" name="usuario" placeholder="Usuário">
-                    </div>
-                    <div class="textfield">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" placeholder="senha">
-                    </div>
-                    <div class="textfield">
-                        <label for="senha">Confirmar senha</label>
-                        <input type="password" name="senha" placeholder="senha">
-                    </div>
-                    <button class="btn-cadastro" id="btn-cadastro">Cadastrar</button>
-                    <a href="../Interface-Login/Login.html">Já possui uma conta?</a>
-                </form>
-           
-            </div>
+    <!-- CSS correto -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Cadastro.css') }}">
+
+    <!-- JS correto -->
+    <script src="{{ url_for('static', filename='Interface-Cadastro/script.js') }}"></script>
+</head>
+
+<body>
+    <div class="main-Cadastro">
+        <div class="left-Cadastro">
+            <h1>Faça seu Cadastro</h1>
+            <!-- Imagem correta -->
+            <img src="{{ url_for('static', filename='image/logo_abelha.png') }}" class="left-Cadastro-img" alt="img-Cadastro">
+        </div>
+        <div class="right-Cadastro">
+
+            <!-- Formulário com POST e action correta -->
+            <form class="r-card-Cadastro" method="POST" action="{{ url_for('cadastro') }}">
+                <h1>Cadastro</h1>
+                <div class="textfield">
+                    <label for="usuario">Usuário/email</label>
+                    <input type="text" name="username" placeholder="Usuário">
+                </div>
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="password" placeholder="Senha">
+                </div>
+                <div class="textfield">
+                    <label for="confirm_password">Confirmar senha</label>
+                    <input type="password" name="confirm_password" placeholder="Confirme a senha">
+                </div>
+                <button class="btn-cadastro" id="btn-cadastro" type="submit">Cadastrar</button>
+
+                <!-- Link para login -->
+                <a href="{{ url_for('login') }}">Já possui uma conta?</a>
+            </form>
 
         </div>
-
-    </body>
+    </div>
+</body>
 
 </html>
